@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("Logging into AWS Console"){
             steps{
-                withCredentials([string(credentialsId: 'AWS-CLI', variable: 'AWS_CREDS')]){
+                withCredentials([string($class: 'AmazonWebServicesCredentialsBinding',credentialsId: 'AWS-CLI', variable: 'AWS_CREDS')]){
                     sh "echo 'hello world'"
                 }
             }
